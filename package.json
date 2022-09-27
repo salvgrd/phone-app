@@ -9,14 +9,64 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
+    "autoprefixer": "^10.4.12",
+    "commitizen": "^4.2.5",
+    "cypress": "^10.9.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "postcss": "^8.4.16",
+    "prettier": "^2.7.1",
+    "tailwindcss": "^3.1.8",
     "typescript": "^4.6.4",
-    "vite": "^3.1.0"
+    "vite": "^3.1.0",
+    "vitest": "^0.23.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog",
+      "skipScope": true,
+      "allowCustomScopes": true,
+      "allowBreakingChanges": [
+        "feat",
+        "fix"
+      ],
+      "types": {
+        "feat": {
+          "title": "Feature",
+          "description": "A new feature"
+        },
+        "fix": {
+          "title": "Bugfix",
+          "description": "A bug fix"
+        },
+        "docs": {
+          "title": "Docs",
+          "description": "Documentation only changes"
+        },
+        "refactor": {
+          "title": "Refactor",
+          "description": "A code change that neither fixes a bug nor adds a feature"
+        },
+        "test": {
+          "title": "Test",
+          "description": "Adding missing tests"
+        },
+        "chore": {
+          "title": "Chore",
+          "description": "Changes to the build process or auxiliary tools and libraries such as documentation generation"
+        }
+      }
+    }
   }
 }
