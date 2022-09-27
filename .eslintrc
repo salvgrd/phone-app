@@ -1,0 +1,24 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "prettier",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "plugins": ["prettier"],
+  "rules": {
+    "curly": ["error"],
+    "@typescript-eslint/explicit-function-return-type": ["error"],
+    "@typescript-eslint/explicit-member-accessibility": ["error"],
+    "@typescript-eslint/no-unused-vars": ["error", { "args": "after-used", "ignoreRestSiblings": true }],
+    
+    "prettier/prettier": ["error"],
+
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
+  },
+  "ignorePatterns": ["dist/"]
+}
