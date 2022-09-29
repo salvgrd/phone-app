@@ -5,6 +5,11 @@ import {
   ProductList,
   loader as productLoader,
 } from '../pages/ProductList/ProductList';
+import {
+  ProductDetail,
+  loader as detailLoader,
+  action as cartAction,
+} from '../pages/ProductDetail/ProductDetail';
 
 export const routes: RouteObject[] = [
   {
@@ -16,6 +21,12 @@ export const routes: RouteObject[] = [
         index: true,
         loader: productLoader,
         element: <ProductList />,
+      },
+      {
+        path: 'product/:productId',
+        loader: detailLoader,
+        action: cartAction,
+        element: <ProductDetail />,
       },
     ],
   },
