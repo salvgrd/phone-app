@@ -1,4 +1,4 @@
-import { apiRequest } from '.';
+import { apiRequest, memoRequest } from '.';
 import { Detail, CartCount } from './types';
 
 export type AddToCartPayload = {
@@ -7,7 +7,7 @@ export type AddToCartPayload = {
   storageCode: number;
 };
 
-export const getProductDetail = async ({
+const getProductDetail = async ({
   productId,
 }: {
   productId: string;
@@ -18,6 +18,10 @@ export const getProductDetail = async ({
   });
   return data;
 };
+
+export const cachedProductDetail = memoRequest<Detail, { productId: string }>(
+  getProductDetail
+);
 
 export const addProductToCart = async (
   body: AddToCartPayload

@@ -4,7 +4,10 @@ import {
   LoaderFunctionArgs,
   useLoaderData,
 } from 'react-router-dom';
-import { addProductToCart, getProductDetail } from '../../api/productDetail';
+import {
+  addProductToCart,
+  cachedProductDetail as getProductDetail,
+} from '../../api/productDetail';
 import { CartCount, Detail } from '../../api/types';
 import { ProductDescription } from '../../components/ProductDescription/ProductDescription';
 
