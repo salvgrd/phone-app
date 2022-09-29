@@ -1,11 +1,16 @@
 import { Outlet } from 'react-router-dom';
 import { Header } from '../../components/Header/Header';
+import { CounterProvider } from '../../store';
 
 export const Root = (): JSX.Element => {
   return (
     <>
-      <Header />
-      <Outlet />
+      <CounterProvider>
+        <>
+          <Header />
+          <Outlet />
+        </>
+      </CounterProvider>
     </>
   );
 };

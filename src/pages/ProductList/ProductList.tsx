@@ -1,4 +1,4 @@
-import { Form, useLoaderData, useSubmit } from 'react-router-dom';
+import { Form, Link, useLoaderData, useSubmit } from 'react-router-dom';
 import { cachedProductList as getProductList } from '../../api/productList';
 import { Product } from '../../api/types';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
@@ -37,7 +37,9 @@ export const ProductList = (): JSX.Element => {
       </Form>
       <div className="m-2 grid md:grid-cols-4 grid-cols-2 gap-4 overflow-scroll">
         {products.map(p => (
-          <ProductCard className="h-42" key={p.id} product={p} />
+          <Link key={p.id} to={`/product/${p.id}`}>
+            <ProductCard className="h-42" product={p} />
+          </Link>
         ))}
       </div>
     </>
