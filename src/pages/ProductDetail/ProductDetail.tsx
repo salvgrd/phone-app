@@ -38,7 +38,6 @@ export async function action({
     storageCode: Number(productData.storage),
     id: productId as string,
   });
-  console.log({ cartCount });
   return { cartCount };
 }
 
