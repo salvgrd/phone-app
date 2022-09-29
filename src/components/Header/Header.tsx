@@ -1,20 +1,21 @@
-import { useContext } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { CounterContext } from '../../store';
+import { NavLink } from 'react-router-dom';
+
+type HeaderProps = {
+  count: number;
+  location: string;
+};
 
 const parsePath = (path: string): string => {
   return path === '/' ? '' : path;
 };
 
-export const Header = (): JSX.Element => {
-  const location = useLocation();
-  const { count } = useContext(CounterContext);
-  const content = ['Phone App!', `product count: ${count}`];
+export const Header = ({ count, location }: HeaderProps): JSX.Element => {
+  const content = ['Phone App!', `Product count: ${count}`];
 
   return (
     <header className="m-2 dark:bg-cyan-700 bg-orange-100 rounded flex justify-around">
       <span>
-        {location.pathname === '/' ? (
+        {location === '/' ? (
           'Home'
         ) : (
           <NavLink
@@ -27,7 +28,7 @@ export const Header = (): JSX.Element => {
             Home
           </NavLink>
         )}
-        {parsePath(location.pathname)}
+        {parsePath(location)}
       </span>
       {content.map(text => (
         <span
