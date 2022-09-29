@@ -13,7 +13,7 @@ A simple shopping cart app. Built with Typescript, Vite, React, Tailwindcss, and
 ## Features
 - State management with React-router's new [Data API](https://reactrouter.com/en/main/start/overview)!
 
-- An in-memory cache for requests!
+- An in-memory cache for requests ([check it out](./src/api/index.ts))!
 
 - Dark and light mode thanks to Tailwindcss and Vite's boilerplate!
 
