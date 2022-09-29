@@ -1,7 +1,9 @@
+import { useContext, useEffect } from 'react';
 import {
   ActionFunctionArgs,
   Form,
   LoaderFunctionArgs,
+  useActionData,
   useLoaderData,
 } from 'react-router-dom';
 import {
@@ -10,8 +12,10 @@ import {
 } from '../../api/productDetail';
 import { CartCount, Detail } from '../../api/types';
 import { ProductDescription } from '../../components/ProductDescription/ProductDescription';
+import { CounterContext } from '../../store';
 
 type DetailData = { product: Detail };
+type CartCountData = { cartCount: CartCount };
 
 export async function loader({
   params,
@@ -26,7 +30,7 @@ export async function loader({
 export async function action({
   request,
   params,
-}: ActionFunctionArgs): Promise<{ cartCount: CartCount }> {
+}: ActionFunctionArgs): Promise<CartCountData> {
   const formData = await request.formData();
   const { productId } = params;
   const productData = Object.fromEntries(formData) as {
@@ -43,7 +47,16 @@ export async function action({
 
 export const ProductDetail = (): JSX.Element => {
   const { product } = useLoaderData() as DetailData;
+  const actionData = useActionData() as CartCountData;
+  const { setCount } = useContext(CounterContext);
   const { imgUrl, brand, model } = product;
+
+  useEffect(() => {
+    if (actionData) {
+      setCount(state => state + actionData.cartCount.count);
+    }
+  }, [actionData, setCount]);
+
   return (
     <>
       <div className="m-2 shrink grid grid-cols-2 grid-rows-2 gap-4">

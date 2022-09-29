@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
+import { CounterContext } from '../../store';
 
 const parsePathContent = (path: string): string => {
   return path === '/' ? 'Home' : path;
@@ -6,10 +8,11 @@ const parsePathContent = (path: string): string => {
 
 export const Header = (): JSX.Element => {
   const location = useLocation();
+  const { count } = useContext(CounterContext);
   const content = [
     parsePathContent(location.pathname),
     'Phone App!',
-    'product count',
+    `product count: ${count}`,
   ];
 
   return (
