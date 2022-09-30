@@ -59,7 +59,6 @@ export const memoRequest = <R, B = undefined>(
 
     const data = await apiCall(body);
     cache.set(selector, { data, expiration: getExpirationDate() });
-
     return data;
   };
 };
