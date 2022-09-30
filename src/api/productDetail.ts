@@ -1,4 +1,4 @@
-import { apiRequest, memoRequest } from '.';
+import { ApiCallFunction, apiRequest, memoRequest } from '.';
 import { Detail, CartCount } from './types';
 
 export type AddToCartPayload = {
@@ -7,11 +7,10 @@ export type AddToCartPayload = {
   storageCode: number;
 };
 
-const getProductDetail = async ({
-  productId,
-}: {
-  productId: string;
-}): Promise<Detail> => {
+const getProductDetail: ApiCallFunction<Detail, { productId: string }> = async (
+  body
+): Promise<Detail> => {
+  const { productId } = body as { productId: string };
   const data = await apiRequest<Detail>({
     path: `product/${productId}`,
     method: 'GET',

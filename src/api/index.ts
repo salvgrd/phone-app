@@ -2,7 +2,9 @@ import { HttpMethod } from './types';
 
 const EXPIRATION_TIME_IN_SECONDS = 3_600;
 
-type ApiCallFunction<R, B> = (() => Promise<R>) | ((args: B) => Promise<R>);
+export type ApiCallFunction<R, B> =
+  | (() => Promise<R>)
+  | ((args?: B) => Promise<R>);
 
 type ApiRequestParams<T> = {
   path: string;
@@ -57,7 +59,6 @@ export const memoRequest = <R, B = undefined>(
 
     const data = await apiCall(body);
     cache.set(selector, { data, expiration: getExpirationDate() });
-
     return data;
   };
 };

@@ -1,16 +1,16 @@
-import { Outlet } from 'react-router-dom';
+import { useContext } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from '../../components/Header/Header';
-import { CounterProvider } from '../../store';
+import { CounterContext } from '../../store';
 
 export const Root = (): JSX.Element => {
+  const { count } = useContext(CounterContext);
+  const { pathname } = useLocation();
+
   return (
     <>
-      <CounterProvider>
-        <>
-          <Header />
-          <Outlet />
-        </>
-      </CounterProvider>
+      <Header location={pathname} count={count} />
+      <Outlet />
     </>
   );
 };
