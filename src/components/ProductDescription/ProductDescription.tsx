@@ -15,7 +15,7 @@ export const ProductDescription = ({
   model,
 }: Detail): JSX.Element => {
   return (
-    <div className="rounded border p-2">
+    <ul className="rounded border p-2">
       <li>{brand}</li>
       <li>{model}</li>
       <li>{price}</li>
@@ -28,6 +28,6 @@ export const ProductDescription = ({
       <li>{secondaryCmera}</li>
       <li>{dimentions}</li>
       <li>{weight}</li>
-    </div>
+    </ul>
   );
 };

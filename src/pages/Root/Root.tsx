@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from '../../components/Header/Header';
-import { CounterContext, CounterProvider } from '../../store';
+import { CounterContext } from '../../store';
 
 export const Root = (): JSX.Element => {
   const { count } = useContext(CounterContext);
@@ -9,12 +9,8 @@ export const Root = (): JSX.Element => {
 
   return (
     <>
-      <CounterProvider>
-        <>
-          <Header location={pathname} count={count} />
-          <Outlet />
-        </>
-      </CounterProvider>
+      <Header location={pathname} count={count} />
+      <Outlet />
     </>
   );
 };
